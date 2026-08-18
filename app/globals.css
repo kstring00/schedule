@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --velvet: #120E18;
+  --nebula: #3B2A3F;
+  --smoky: #7A6D7F;
+  --solar: #E07A2E;
+  --ember: #F4A883;
+  --stardust: #F6ECDD;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--velvet);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(122, 109, 127, 0.12), transparent 27%),
+    radial-gradient(circle at 88% 15%, rgba(224, 122, 46, 0.09), transparent 23%),
+    radial-gradient(circle at 50% 100%, rgba(59, 42, 63, 0.42), transparent 34%),
+    linear-gradient(180deg, #120E18 0%, #0c0910 100%);
+  color: var(--stardust);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(246, 236, 221, 0.16) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 75% 12%, rgba(244, 168, 131, 0.12) 0 1px, transparent 1.4px),
+    radial-gradient(circle at 42% 70%, rgba(246, 236, 221, 0.1) 0 1px, transparent 1.3px);
+  background-size: 180px 180px, 240px 240px, 320px 320px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(224, 122, 46, 0.35);
+  color: var(--stardust);
+}
+
+@layer components {
+  .cosmic-panel {
+    @apply rounded-3xl border border-stardust/10 bg-nebula/15 shadow-2xl backdrop-blur-sm;
+  }
+
+  .cosmic-kicker {
+    @apply text-[10px] font-semibold uppercase tracking-[0.28em] text-solar sm:text-xs;
+  }
+
+  .dune-title,
+  .dune-heading {
+    font-family: "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .dune-title {
+    letter-spacing: 0.17em;
+  }
+
+  .icon-button {
+    @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-stardust/10 bg-stardust/5 text-lg text-stardust/75 transition hover:border-ember/30 hover:bg-ember/10 hover:text-ember;
+  }
+
+  .primary-button {
+    @apply rounded-xl border border-solar/45 bg-solar px-4 py-3 text-sm font-semibold text-velvet transition hover:bg-ember disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .secondary-button {
+    @apply rounded-xl border border-stardust/10 bg-stardust/5 px-3 py-2 text-xs font-semibold text-stardust/70 transition hover:border-ember/30 hover:bg-ember/10 hover:text-ember sm:px-4 sm:text-sm;
+  }
+
+  .danger-button {
+    @apply rounded-xl border border-red-300/15 bg-red-300/5 px-4 py-3 text-sm font-semibold text-red-200/70 transition hover:bg-red-300/10 hover:text-red-100;
+  }
+
+  .view-switcher {
+    @apply grid grid-cols-3 rounded-xl border border-stardust/10 bg-velvet/50 p-1;
+  }
+
+  .view-button {
+    @apply rounded-lg px-3 py-2 text-xs font-semibold text-stardust/45 transition sm:px-4 sm:text-sm;
+  }
+
+  .view-button:hover {
+    @apply text-stardust;
+  }
+
+  .view-button-active {
+    @apply bg-stardust/10 text-ember shadow-sm;
+  }
+
+  .calendar-day {
+    @apply flex min-h-[76px] min-w-0 flex-col rounded-xl border border-stardust/10 bg-velvet/35 p-1.5 text-left transition hover:border-ember/25 hover:bg-nebula/25 sm:min-h-28 sm:p-2.5 lg:min-h-32;
+  }
+
+  .calendar-day-muted {
+    @apply opacity-35;
+  }
+
+  .calendar-day-today {
+    box-shadow: inset 0 0 0 1px rgba(244, 168, 131, 0.7), 0 0 24px rgba(224, 122, 46, 0.08);
+  }
+
+  .calendar-day-selected {
+    @apply border-solar/70 bg-solar/10;
+  }
+
+  .week-day-card {
+    @apply flex min-h-36 flex-col justify-between rounded-2xl border border-stardust/10 bg-velvet/40 p-4 text-left transition hover:-translate-y-0.5 hover:border-ember/30 hover:bg-nebula/25 md:min-h-56;
+  }
+
+  .editor-sheet {
+    @apply w-full max-w-2xl overflow-hidden rounded-t-3xl border border-b-0 border-ember/20 bg-velvet shadow-2xl sm:rounded-3xl sm:border-b;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-stardust/50;
+  }
+
+  .preset-button {
+    @apply rounded-xl border border-stardust/10 bg-stardust/5 px-3 py-3 text-left text-xs font-semibold text-stardust/80 transition hover:border-ember/35 hover:bg-ember/10 hover:text-ember;
+  }
+
+  .field-label {
+    @apply block text-xs font-medium uppercase tracking-[0.12em] text-stardust/45;
+  }
+
+  .time-input {
+    @apply mt-2 w-full rounded-xl border border-stardust/10 bg-black/20 px-3 py-3 text-sm text-stardust outline-none transition focus:border-solar/50 focus:ring-2 focus:ring-solar/10;
+  }
+}
+
+@media (max-width: 639px) {
+  .dune-title {
+    letter-spacing: 0.11em;
+  }
+}
